@@ -1,31 +1,28 @@
 import { defineStore } from "pinia";
 import api from "@/axios";
-import { recipe } from "@/types/Recipe";
+import { Recipe } from "@/types/Recipe";
 
 export const useApiCallStore = defineStore("apiCall", {
     state: () => ({
-        recipes: [] as recipe[],
+        recipes: [] as Recipe[],
         favourites: (JSON.parse(localStorage.getItem("favourites") as string) ??
-            []) as recipe[],
+            []) as Recipe[],
     }),
     actions: {
-        async getRecipes(ingredients: string) {
-            if (this.recipes.length === 0) {
-                const response = await api.get("", {
-                    params: { q: ingredients },
-                });
-                return response.data.hits;
-            }
-            return this.recipes;
+        async getFilteredRecipes(ingredients: string) {
+            const response = await api.get("", {
+                params: { q: ingredients },
+            });
+            return response.data.hits;
         },
         async getRecipeDetail(id: string) {
             const response = await api.get(`${id}`);
             return response.data[0];
         },
-        addToFavourites(recipe: recipe) {
+        addToFavourites(recipe: Recipe) {
             console.log(recipe);
 
-            const favourites = this.favourites as recipe[];
+            const favourites = this.favourites as Recipe[];
             favourites.push(recipe);
             localStorage.setItem("favourites", JSON.stringify(favourites));
         },

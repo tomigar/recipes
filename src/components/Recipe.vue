@@ -10,7 +10,7 @@
     </RouterLink>
     <div
         class="aboslute top-0 right-0"
-        @click="store.addToFavourites(props.recipe as recipe)"
+        @click="store.addToFavourites(props.recipe as Recipe)"
     >
         fav
     </div>
@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 import { useApiCallStore } from "@/stores/apiCalls";
-import { recipe } from "@/types/Recipe";
+import { Recipe } from "@/types/Recipe";
 
 const store = useApiCallStore();
 
