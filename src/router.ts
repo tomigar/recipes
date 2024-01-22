@@ -16,6 +16,10 @@ export default createRouter({
                     path: "/favourites",
                     component: () => import("@/views/Favourites.vue"),
                 },
+                {
+                    path: "/recipe/:id",
+                    component: () => import("@/views/RecipeDetail.vue"),
+                },
             ],
         },
     ],
