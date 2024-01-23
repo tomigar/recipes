@@ -1,14 +1,18 @@
 <template>
     <RouterLink
         :to="`recipe/${getRecipeId(props.recipe.uri)}`"
-        class="relative"
+        class="relative flex flex-col justify-center items-center rounded-lg border"
     >
-        {{ props.recipe.label }}
-        {{ props.recipe.label }}
-        <img :src="props.recipe.image" />
-        <a :href="props.recipe.url">Link</a>
+        <img
+            class="h-24 w-full object-cover rounded-t"
+            :src="props.recipe.image"
+        />
+        <h2 class="text-center">
+            {{ props.recipe.label }}
+        </h2>
     </RouterLink>
     <div
+        v-if="store.favourites.includes(props.recipe as Recipe)"
         class="aboslute top-0 right-0"
         @click="store.addToFavourites(props.recipe as Recipe)"
     >

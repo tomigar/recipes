@@ -1,6 +1,8 @@
 <template>
-    <div v-for="recipe in store.favourites">
-        <Recipe :recipe="recipe" />
+    <div class="grid grid-cols-3 gap-6">
+        <div v-for="recipe in store.favourites">
+            <Recipe :recipe="recipe" />
+        </div>
     </div>
 </template>
 

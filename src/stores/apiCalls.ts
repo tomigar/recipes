@@ -20,8 +20,6 @@ export const useApiCallStore = defineStore("apiCall", {
             return response.data[0];
         },
         addToFavourites(recipe: Recipe) {
-            console.log(recipe);
-
             const favourites = this.favourites as Recipe[];
             favourites.push(recipe);
             localStorage.setItem("favourites", JSON.stringify(favourites));
