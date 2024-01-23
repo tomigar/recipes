@@ -1,10 +1,10 @@
 <template>
     <RouterLink
         :to="`recipe/${getRecipeId(props.recipe.uri)}`"
-        class="relative flex flex-col justify-center items-center rounded-lg border"
+        class="relative flex flex-col justify-start items-center rounded-lg border h-full shadow-lg bg-gray-200"
     >
         <img
-            class="h-24 w-full object-cover rounded-t"
+            class="h-36 w-full object-cover rounded-t"
             :src="props.recipe.image"
         />
         <h2 class="text-center">
@@ -39,5 +39,3 @@ const getRecipeId = (recipeUri: string) => {
     return split[split.length - 1];
 };
 </script>
-
-<style scoped></style>

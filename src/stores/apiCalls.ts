@@ -17,11 +17,19 @@ export const useApiCallStore = defineStore("apiCall", {
         },
         async getRecipeDetail(id: string) {
             const response = await api.get(`${id}`);
-            return response.data[0];
+            return response.data;
         },
-        addToFavourites(recipe: Recipe) {
+        addToFavourites(recipe: Recipe["recipe"]) {
             const favourites = this.favourites as Recipe[];
             favourites.push(recipe);
+            localStorage.setItem("favourites", JSON.stringify(favourites));
+        },
+        deleteFromFavourites(recipe: Recipe["recipe"]) {
+            const favourites = this.favourites as Recipe[];
+            const index = favourites.findIndex(
+                (favourite) => favourite.recipe.uri === recipe.recipe.uri
+            );
+            favourites.splice(index, 1);
             localStorage.setItem("favourites", JSON.stringify(favourites));
         },
     },

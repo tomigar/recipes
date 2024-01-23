@@ -2,7 +2,8 @@ export interface Recipe {
     recipe: {
         label: string;
         image: string;
-        url: string;
+        uri: string;
         ingredientLines: string[];
+        mealType: string[];
     };
 }
