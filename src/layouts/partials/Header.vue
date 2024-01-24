@@ -42,6 +42,4 @@ const items = ref([
         route: "/favourites",
     },
 ] as HeaderItem[]);
-
-console.log(selected.value === items.value[0].route);
 </script>
