@@ -2,7 +2,10 @@
     <div v-if="!recipeDetail">
         <Spinner />
     </div>
-    <div v-else class="flex justify-center gap-16">
+    <div
+        v-else
+        class="flex flex-col justify-center gap-16 xl:flex-row items-center"
+    >
         <div>
             <h1 class="text-xl font-bold">{{ recipeDetail.label }}</h1>
             <div
@@ -22,7 +25,7 @@
                 <Chip v-for="mType in recipeDetail.mealType" :label="mType" />
             </div>
             <button
-                v-if="isFavourite"
+                v-if="!isFavourite"
                 @click="store.addToFavourites(recipeDetail)"
                 class="border bg-yellow-400 rounded-full px-4 py-2"
             >
@@ -30,7 +33,7 @@
             </button>
             <button
                 v-else
-                @click="store.deleteFromFavourites(recipeDetail)"
+                @click="store.deleteFromFavourites(recipeDetail.uri)"
                 class="border bg-yellow-400 rounded-full px-4 py-2"
             >
                 Remove From Favourites

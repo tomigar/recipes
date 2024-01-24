@@ -11,21 +11,10 @@
             {{ props.recipe.label }}
         </h2>
     </RouterLink>
-    <div
-        v-if="store.favourites.includes(props.recipe as Recipe)"
-        class="aboslute top-0 right-0"
-        @click="store.addToFavourites(props.recipe as Recipe)"
-    >
-        fav
-    </div>
 </template>
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { useApiCallStore } from "@/stores/apiCalls";
-import { Recipe } from "@/types/Recipe";
-
-const store = useApiCallStore();
 
 const props = defineProps({
     recipe: {

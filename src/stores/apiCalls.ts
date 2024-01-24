@@ -21,13 +21,13 @@ export const useApiCallStore = defineStore("apiCall", {
         },
         addToFavourites(recipe: Recipe["recipe"]) {
             const favourites = this.favourites as Recipe[];
-            favourites.push(recipe);
+            favourites.push({ recipe: recipe });
             localStorage.setItem("favourites", JSON.stringify(favourites));
         },
-        deleteFromFavourites(recipe: Recipe["recipe"]) {
+        deleteFromFavourites(uri: string) {
             const favourites = this.favourites as Recipe[];
             const index = favourites.findIndex(
-                (favourite) => favourite.recipe.uri === recipe.recipe.uri
+                (favourite) => favourite.recipe.uri === uri
             );
             favourites.splice(index, 1);
             localStorage.setItem("favourites", JSON.stringify(favourites));

@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col min-h-screen justify-start">
         <Header />
-        <div class="w-[1024px] mx-auto py-6">
+        <div class="xl:w-[1024px] mx-auto py-6">
             <router-view></router-view>
         </div>
         <Footer />

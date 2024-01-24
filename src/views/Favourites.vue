@@ -1,7 +1,10 @@
 <template>
-    <div class="grid grid-cols-3 gap-6">
+    <div v-if="!store.favourites.length">
+        <p class="text-center text-gray-400">No Favourites</p>
+    </div>
+    <div v-else class="grid grid-cols-3 gap-6">
         <div v-for="recipe in store.favourites">
-            <Recipe :recipe="recipe" />
+            <Recipe :recipe="recipe.recipe" />
         </div>
     </div>
 </template>
